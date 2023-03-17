@@ -1,15 +1,15 @@
-# node-qdrant
+# Qdrant
 
 Javascript client library for the Qdrant vector search engine (https://qdrant.tech)
 
 ## Install
 
-`npm install qdrant`
+`npm install @davmixcool/qdrant`
 
 Then you can use it in your project:
 
 ```javascript
-import { Qdrant } from "qdrant"
+import { Qdrant } from "@davmixcool/qdrant"
 const qdrant = new Qdrant("http://localhost:6333/");
 ```
 

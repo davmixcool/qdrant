@@ -1,7 +1,7 @@
 {
-  "name": "qdrant",
+  "name": "@davmixcool/qdrant",
   "version": "1.3.1",
-  "description": "Qdrant vector search engine client library",
+  "description": "Qdrant vector search engine client library for node",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -9,19 +9,22 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/maxdotio/node-qdrant.git"
+    "url": "git+https://github.com/davmixcool/qdrant.git"
   },
   "keywords": [
     "qdrant",
     "search",
     "ann"
   ],
-  "author": "Max Irwin",
+  "contributors": [
+    "Max Irwin",
+    "David Oti <hello@davidoti.com>"
+  ],
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/maxdotio/node-qdrant/issues"
+    "url": "https://github.com/davmixcool/qdrant/issues"
   },
-  "homepage": "https://github.com/maxdotio/node-qdrant#readme",
+  "homepage": "https://github.com/davmixcool/qdrant#readme",
   "dependencies": {
     "node-fetch": "^3.2.3"
   }
