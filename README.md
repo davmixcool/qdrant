@@ -9,7 +9,7 @@ Javascript client library for the Qdrant vector search engine (https://qdrant.te
 Then you can use it in your project:
 
 ```javascript
-import { Qdrant } from "@davmixcool/qdrant"
+const { Qdrant } = require("@davmixcool/qdrant")
 const qdrant = new Qdrant("http://localhost:6333/");
 ```
 
@@ -18,7 +18,7 @@ const qdrant = new Qdrant("http://localhost:6333/");
 Here is a basic example that creates a client connection and adds a new collection `pretty_colors` to Qdrant.  It assumes the Qdrant docker is running at localhost:6333.  This quick start is also in the examples folder in this repository.
 
 ```javascript
-import { Qdrant } from "qdrant"
+const { Qdrant } = require("@davmixcool/qdrant")
 
 const qdrant = new Qdrant("http://localhost:6333/");
 

@@ -1,4 +1,4 @@
-import { body_request, url_request } from "./request.js";
+const { body_request, url_request } =  require("./request");
 
 const base_url = "http://localhost:6333/";
 
@@ -7,7 +7,7 @@ const QdrantResponse = function(response) {
 	this.response = response[1];
 }
 
-export const Qdrant = function(url){
+const Qdrant = function(url){
 	this.url = url||base_url;
 };
 
@@ -70,4 +70,9 @@ Qdrant.prototype.retrieve_points = async function (name,query) {
 	let qdrant_url = this.url;
 	let url = `${qdrant_url}collections/${name}/points`;
 	return new QdrantResponse(await body_request(url,query,'POST'));
+}
+
+
+module.exports = { 
+    Qdrant
 }
