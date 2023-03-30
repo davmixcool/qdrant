@@ -1,6 +1,6 @@
 # Qdrant
 
-Javascript client library for the Qdrant vector search engine (https://qdrant.tech)
+Nodejs library for the Qdrant vector search engine (https://qdrant.tech)
 
 ## Install
 
@@ -140,6 +140,10 @@ Uploads vectors and payloads in `points` to the collection `collection_name`
 ### `delete_points(collection_name,points)`
 
 Delete `points` in a collection `collection_name`
+
+### `update_points(collection_name,points,payload)`
+
+Update `points` payload in a collection `collection_name`
 
 ### `search_collection(collection_name,vector,k,ef,filter)`
 

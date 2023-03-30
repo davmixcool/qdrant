@@ -40,7 +40,14 @@ Qdrant.prototype.upload_points = async function (name,points) {
 	return new QdrantResponse(await body_request(url,{points:points},'PUT'));
 }
 
+//PUT http://localhost:6333/collections/{collection_name}/points/payload
+Qdrant.prototype.update_points = async function (name,points,payload) {
+	let qdrant_url = this.url;
+	let url = `${qdrant_url}collections/${name}/points/payload`;	
+	return new QdrantResponse(await body_request(url,{payload:payload,points:points},'PUT'));
+}
 
+//POST http://localhost:6333/collections/{collection_name}/points/delete
 Qdrant.prototype.delete_points = async function (name,points) {
 	let qdrant_url = this.url;
 	let url = `${qdrant_url}collections/${name}/points/delete`;	
