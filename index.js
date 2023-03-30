@@ -32,12 +32,19 @@ Qdrant.prototype.get_collection = async function (name) {
 	return new QdrantResponse(await url_request(url));
 }
 
-
+//Perform insert + updates on points. If point with given ID already exists - it will be overwritten.
 //PUT http://localhost:6333/collections/{collection_name}/points
 Qdrant.prototype.upload_points = async function (name,points) {
 	let qdrant_url = this.url;
 	let url = `${qdrant_url}collections/${name}/points`;	
 	return new QdrantResponse(await body_request(url,{points:points},'PUT'));
+}
+
+
+Qdrant.prototype.delete_points = async function (name,points) {
+	let qdrant_url = this.url;
+	let url = `${qdrant_url}collections/${name}/points/delete`;	
+	return new QdrantResponse(await body_request(url,{points:points},'POST'));
 }
 
 //POST http://localhost:6333/collections/{collection_name}/points/search
@@ -51,7 +58,9 @@ Qdrant.prototype.search_collection = async function (name,vector,k,ef,filter) {
 			"hnsw_ef": ef
 		},
 		"vector": vector,
-		"top": k
+		"top": k,
+		"with_payload": true,
+		"with_vectors": false,
 	};
 	if (filter) query.filter = filter;
 	return new QdrantResponse(await body_request(url,query,'POST'));

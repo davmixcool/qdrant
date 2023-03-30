@@ -121,30 +121,34 @@ Always check for presence of `err`.  If `err` is not null, then the response mig
 
 With an qdrant object, just await one of the following methods to interact with the engine and its collections:
 
-### `create_collection(name,body)`
+### `create_collection(collection_name,body)`
 
-Creates a new collection with `name` and the schema specified in `body`
+Creates a new collection with `collection_name` and the schema specified in `body`
 
-### `get_collection(name)`
+### `get_collection(collection_name)`
 
-Gets the collection information for `name`
+Gets the collection information for `collection_name`
 
-### `delete_collection(name)`
+### `delete_collection(collection_name)`
 
-Deletes a collection with `name`
+Deletes a collection with `collection_name`
 
-### `upload_points(name,points)`
+### `upload_points(collection_name,points)`
 
-Uploads vectors and payloads in `points` to the collection `name`
+Uploads vectors and payloads in `points` to the collection `collection_name`
 
-### `search_collection(name,vector,k,ef,filter)`
+### `delete_points(collection_name,points)`
+
+Delete `points` in a collection `collection_name`
+
+### `search_collection(collection_name,vector,k,ef,filter)`
 
 Searches the collection with a `vector`, to get the top `k` most similar points (default 5), using HNSW `ef` (default is 128), and an optional payload filter.
 
-### `query_collection(name,query)`
+### `query_collection(collection_name,query)`
 
 Searches the collection with a `query` that must be fully defined by the caller.
 
-### `retrieve_points(name,query)`
+### `retrieve_points(collection_name,query)`
 
 Gets all the points by the array of ids provided
