@@ -1,6 +1,6 @@
 {
   "name": "@davmixcool/qdrant",
-  "version": "1.3.4",
+  "version": "1.3.5",
   "description": "Qdrant vector search engine client library for node",
   "main": "index.js",
   "scripts": {
