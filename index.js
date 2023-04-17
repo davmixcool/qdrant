@@ -32,6 +32,20 @@ Qdrant.prototype.get_collection = async function (name) {
 	return new QdrantResponse(await url_request(url));
 }
 
+//PUT http://localhost:6333/collections/{collection_name}/index
+Qdrant.prototype.create_collection_index = async function (name,body) {
+	let qdrant_url = this.url;
+	let url = `${qdrant_url}collections/${name}/index`;
+	return new QdrantResponse(await body_request(url,body,'PUT'));
+}
+
+//DELETE http://localhost:6333/collections/{collection_name}/index/{field_name}
+Qdrant.prototype.delete_collection_index = async function (name,field_name) {
+	let qdrant_url = this.url;
+	let url = `${qdrant_url}collections/${name}/index/${field_name}`;
+	return new QdrantResponse(await body_request(url,null,'DELETE'));
+}
+
 //Perform insert + updates on points. If point with given ID already exists - it will be overwritten.
 //PUT http://localhost:6333/collections/{collection_name}/points
 Qdrant.prototype.upload_points = async function (name,points) {

@@ -133,6 +133,14 @@ Gets the collection information for `collection_name`
 
 Deletes a collection with `collection_name`
 
+### `create_collection_index(collection_name,body)`
+
+Creates a new collection index with `collection_name` and the schema specified in `body`
+
+### `delete_collection_index(collection_name,field_name)`
+
+Deletes a collection index with `collection_name` and `field_name`
+
 ### `upload_points(collection_name,points)`
 
 Uploads vectors and payloads in `points` to the collection `collection_name`
