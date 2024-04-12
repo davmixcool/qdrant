@@ -71,13 +71,13 @@ if (upload_result.err) {
 
 /// -------------------------------------------------------------------------
 /// Search the closest color (k=1)
-let purplish = [0.8,0.1,0.7];
-let search_result = await qdrant.search_collection(name,purplish,1);
+let vector = [0.8,0.1,0.7];
+let search_result = await qdrant.search_collection({name,vector,1});
 if (search_result.err) {
-    console.error(`ERROR: Couldn't search ${purplish}`);
+    console.error(`ERROR: Couldn't search ${vector}`);
     console.error(search_result.err);
 } else {
-    console.log(`Search results for ${purplish}`);
+    console.log(`Search results for ${vector}`);
     console.log(search_result.response);
 }
 
@@ -89,12 +89,12 @@ let filter = {
         { "key": "color", "match": { "keyword": "cyan" } }
     ]
 }
-let filtered_result = await qdrant.search_collection(name,purplish,1,128,filter);
+let filtered_result = await qdrant.search_collection({name,vector,k:1,ef:128,filter});
 if (filtered_result.err) {
-    console.error(`ERROR: Couldn't search ${purplish} with ${filter}`);
+    console.error(`ERROR: Couldn't search ${vector} with ${filter}`);
     console.error(filtered_result.err);
 } else {
-    console.log(`Search results for filtered ${purplish}`);
+    console.log(`Search results for filtered ${vector}`);
     console.log(filtered_result.response);
 }
 
@@ -153,9 +153,13 @@ Delete `points` in a collection `collection_name`
 
 Update `points` payload in a collection `collection_name`
 
-### `search_collection(collection_name,vector,k,ef,filter)`
+### `search_collection({name,vector,k,ef,filter,exact,indexed_only})`
 
-Searches the collection with a `vector`, to get the top `k` most similar points (default 5), using HNSW `ef` (default is 128), and an optional payload filter.
+Searches the collection with a `vector`, to get the top `k` most similar points (default 5), using HNSW `ef` (default is 128), and an optional payload `filter`, `exact`, and `indexed_only` params.
+
+`exact` - option to not use the approximate search (ANN). If set to true, the search may run for a long as it performs a full scan to retrieve exact results.
+
+`indexed_only` - With this option you can disable the search in those segments where vector index is not built yet. This may be useful if you want to minimize the impact to the search performance whilst the collection is also being updated. Using this option may lead to a partial result if the collection is not fully indexed yet, consider using it only if eventual consistency is acceptable for your use case.
 
 ### `query_collection(collection_name,query)`
 
