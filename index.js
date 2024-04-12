@@ -69,14 +69,16 @@ Qdrant.prototype.delete_points = async function (name,points) {
 }
 
 //POST http://localhost:6333/collections/{collection_name}/points/search
-Qdrant.prototype.search_collection = async function (name,vector,k,ef,filter) {
+Qdrant.prototype.search_collection = async function ({name,vector,k,ef,filter,exact=false,indexed_only=false}) {
 	k = k || 5;
 	ef = ef || 128;
 	let qdrant_url = this.url;
 	let url = `${qdrant_url}collections/${name}/points/search`;
 	let query = {
 		"params": {
-			"hnsw_ef": ef
+			"hnsw_ef": ef,
+			"exact": exact,
+			"indexed_only": indexed_only,
 		},
 		"vector": vector,
 		"top": k,

@@ -106,3 +106,5 @@ dist
 package-lock.json
 
 qdrant_storage
+
+.DS_Store
